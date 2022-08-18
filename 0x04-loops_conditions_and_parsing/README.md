@@ -24,4 +24,14 @@ You will soon have to manage your own servers concept page hosted on remote [dat
 1. Write a Bash script that displays Best School 10 times.
 
 	Requirement:
-	You must use the for loop (while and until are forbidden)
+		You must use the for loop (while and until are forbidden)
+
+2. Write a Bash script that displays Best School 10 times.
+
+	Requirement:
+		You must use the while loop (for and until are forbidden)
+
+3. Write a Bash script that displays Best School 10 times.
+
+	Requirement:
+		You must use the until loop (for and while are forbidden)
