@@ -63,4 +63,11 @@ You will soon have to manage your own servers concept page hosted on remote [dat
 	You must use the while loop (for and until are forbidden)
 	You must use the case statement
 
+7. Write a Bash script that displays the time for 12 hours and 59 minutes:
+
+	display hours from 0 to 12
+	display minutes from 1 to 59
+
+	Requirements:
+	You must use the while loop (for and until are forbidden)
  
