@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# This script is displaying numbers from 1 to 100
+for (( i=1; i<=100; i++))
+do
+	divby5="$i % 5"
+	divby3="$i % 3"
+	if [[ "$divby5" -eq 0  &&  "$divby3" -eq 0 ]]
+	then
+		echo "FizzBuzz"
+	elif [[ "$divby3" -eq 0 ]]
+	then
+		echo "Fizz"
+	elif [[ "$divby5" -eq 0 ]]
+	then
+		echo "Buzz"
+	else
+		echo "$i"
+	fi
+done
