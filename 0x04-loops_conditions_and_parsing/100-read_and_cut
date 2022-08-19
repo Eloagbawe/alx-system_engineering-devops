@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
-# This script is displaying the content of the current directory In a list format Where only the part of the name after the first dash is displayed
+# This script is displaying the content of the file /etc/passwd
 FILENAME="/etc/passwd"
-while IFS=: read -r username password userid groupid comment homedir cmdshell
+while IFS= read -r line
 do
-	echo "$username:$userid:$homedir"
+	echo "$line" | cut -d ':' -f1,3,6
 done < $FILENAME
