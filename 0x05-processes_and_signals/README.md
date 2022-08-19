@@ -21,3 +21,9 @@ The third line of your script must be # shellcheck disable=SC2009 (for more info
 	Requirements:
 	You cannot use ps
 
+4. Write a Bash script that displays To infinity and beyond indefinitely.
+
+	Requirements:
+	In between each iteration of the loop, add a sleep 2
+
+
