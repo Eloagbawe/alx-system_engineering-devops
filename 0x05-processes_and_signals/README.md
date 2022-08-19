@@ -32,3 +32,8 @@ The third line of your script must be # shellcheck disable=SC2009 (for more info
 
 	Requirements:
 	You must use kill
+
+6. Write a Bash script that stops 4-to_infinity_and_beyond process.
+
+	Requirements:
+	You cannot use kill or killall
