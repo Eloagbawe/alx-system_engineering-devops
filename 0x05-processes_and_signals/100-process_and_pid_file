@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+# Creates the file /var/run/myscript.pid containing its PID
+#Displays To infinity and beyond indefinitely
+#Displays I hate the kill command when receiving a SIGTERM signal
+#Displays Y U no love me?! when receiving a SIGINT signal
+#Deletes the file /var/run/myscript.pid and terminates itself when receiving a SIGQUIT or SIGTERM signal
+
+pid=$$
+echo $pid > /var/run/myscript.pid
+
+function sigInt()
+{
+	echo "Y U no love me?!"
+}
+
+function sigTerm()
+{
+	echo "I hate the kill command"
+	rm /var/run/myscript.pid
+	exit 0
+}
+
+function sigQuit()
+{
+	rm /var/run/myscript.pid
+	exit 0
+}
+
+while 'true'
+do
+	echo "To infinity and beyond"
+	sleep 2
+	trap "sigInt" SIGINT
+	trap "sigTerm" SIGTERM
+	trap "sigQuit" SIGQUIT
+done
