@@ -60,3 +60,6 @@ solutions to regular expression exercises
 
         The regular expression must match a 10 digit phone number
 
+7. Requirement:
+
+        The regular expression must be only matching: capital letters
