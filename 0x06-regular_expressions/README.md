@@ -1,15 +1,11 @@
 solutions to regular expression exercises
 
-0. Simply matching School
-
-    Requirements:
+0. Requirements:
 
         The regular expression must match School
         Using the project instructions, create a Ruby script that accepts one argument and pass it to a regular expression matching method
 
-1. Repetition Token #0
-
-    Requirements:
+1. Requirements:
 
         Find the regular expression that will match the below cases:
 
@@ -20,9 +16,7 @@ solutions to regular expression exercises
 
         Using the project instructions, create a Ruby script that accepts one argument and pass it to a regular expression matching method
 
-2. Repetition Token #1
-
-    Requirements:
+2. Requirements:
 
         Find the regular expression that will match the below cases:
 
@@ -31,37 +25,38 @@ solutions to regular expression exercises
 
         Using the project instructions, create a Ruby script that accepts one argument and pass it to a regular expression matching method
 
-3. Repetition Token #2
+3. Requirements:
 
-    Requirements:
+        Find the regular expression that will match the below cases:
 
-    Find the regular expression that will match the below cases:
+            hbtn
+            hbttn
+            hbtttn
+            hbttttn
 
-        hbtn
-        hbttn
-        hbtttn
-        hbttttn
+        Using the project instructions, create a Ruby script that accepts one argument and pass it to a regular expression matching method
 
-    Using the project instructions, create a Ruby script that accepts one argument and pass it to a regular expression matching method
+4. Requirements:
 
-4. Repetition Token #3
+        Find the regular expression that will match the below cases:
 
-    Requirements:
+            hbn
+            hbtn
+            hbttn
+            hbtttn
 
-    Find the regular expression that will match the below cases:
+        Using the project instructions, create a Ruby script that accepts one argument and pass it to a regular expression matching method
+        Your regex should not contain square brackets
 
-        hbn
-        hbtn
-        hbttn
-        hbtttn
+5. Requirements:
 
-    Using the project instructions, create a Ruby script that accepts one argument and pass it to a regular expression matching method
-    Your regex should not contain square brackets
+        The regular expression must be exactly matching a string that starts with h ends with n and can have any single character in between
 
-5. Not quite HBTN yet
+        Using the project instructions, create a Ruby script that accepts one argument and pass it to a regular expression matching method
 
-    Requirements:
+6. This task is brought to you by a professional advisor Neha Jain, Senior Software Engineer at LinkedIn.
 
-    The regular expression must be exactly matching a string that starts with h ends with n and can have any single character in between
-    
-    Using the project instructions, create a Ruby script that accepts one argument and pass it to a regular expression matching method
+    Requirement:
+
+        The regular expression must match a 10 digit phone number
+
