@@ -43,3 +43,17 @@ solutions to regular expression exercises
         hbttttn
 
     Using the project instructions, create a Ruby script that accepts one argument and pass it to a regular expression matching method
+
+4. Repetition Token #3
+
+    Requirements:
+
+    Find the regular expression that will match the below cases:
+
+        hbn
+        hbtn
+        hbttn
+        hbtttn
+        
+    Using the project instructions, create a Ruby script that accepts one argument and pass it to a regular expression matching method
+    Your regex should not contain square brackets
