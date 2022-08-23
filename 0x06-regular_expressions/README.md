@@ -30,3 +30,16 @@ solutions to regular expression exercises
             hbtn
 
         Using the project instructions, create a Ruby script that accepts one argument and pass it to a regular expression matching method
+
+3. Repetition Token #2
+
+    Requirements:
+
+    Find the regular expression that will match the below cases:
+
+        hbtn
+        hbttn
+        hbtttn
+        hbttttn
+
+    Using the project instructions, create a Ruby script that accepts one argument and pass it to a regular expression matching method
