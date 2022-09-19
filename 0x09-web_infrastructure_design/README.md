@@ -71,3 +71,17 @@ solutions to web infrastructure design exercises
         Why having only one MySQL server capable of accepting writes is an issue
         Why having servers with all the same components (database, web server and application server) might be a problem
     Please, remember that everything must be written in English to further your technical ability in a variety of settings.
+
+3. Readme
+
+    [Application server vs web server](https://www.nginx.com/resources/glossary/application-server-vs-web-server/)
+    
+    Requirements:
+
+    You must add:
+        1 server
+        1 load-balancer (HAproxy) configured as cluster with the other one
+        Split components (web server, application server, database) with their own server
+    You must be able to explain some specifics about this infrastructure:
+        For every additional element, why you are adding it
+    Please, remember that everything must be written in English to further your technical ability in a variety of settings.
