@@ -1,0 +1,2 @@
+IdentityFile ~/.ssh/school
+IdentitiesOnly yes
