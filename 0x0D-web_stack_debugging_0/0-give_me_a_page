@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# Using Apache to run on a container and return a page conatining "Hello Holberton"
+
+apt-get update
+apt-get install apache2
+service apache2 start
