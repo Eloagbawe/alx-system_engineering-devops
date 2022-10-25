@@ -18,7 +18,7 @@ file_line { 'setHeader':
   ensure => 'present',
   path   => '/etc/nginx/nginx.conf',
   after  => 'include /etc/nginx/sites-enabled/*;',
-  line   => '\n\tadd_header X-Served-By $HOSTNAME;\n',
+  line   => '\n\tadd_header X-Served-By ${::hostname};\n',
 }
 service { 'nginx':
   ensure  => running,
