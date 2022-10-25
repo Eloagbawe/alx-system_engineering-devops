@@ -5,16 +5,18 @@ apt-get -y install --no-install-recommends software-properties-common
 add-apt-repository -y ppa:vbernat/haproxy-2.5
 apt-get -y update
 apt-get -y install haproxy=2.5.\*
-echo "ENABLED=1" > /etc/default/haproxy
-echo "
-frontend haproxy-main
-    bind *:80
-    option forwardfor  
-    default_backend nginx_webservers 
+
+cat >> /etc/haproxy/haproxy.cfg << EOF
+frontend
+	bind *:80
+	option forwardfor  
+    default_backend nginx_webservers
 
 backend nginx_webservers
     balance roundrobin
     server 34777-web-01 44.210.96.106:80 check
     server 34777-web-02 54.90.63.204:80 check
-" >> /etc/haproxy/haproxy.cfg
+EOF
+
+echo "ENABLED=1" > /etc/default/haproxy
 service haproxy restart
