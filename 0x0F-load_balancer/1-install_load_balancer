@@ -18,5 +18,6 @@ backend nginx_webservers
     server 34777-web-01 44.210.96.106:80 check
     server 34777-web-02 54.90.63.204:80 check
 "
-sudo echo "$config" >> /etc/haproxy/haproxy.cfg
+echo "ENABLED=1" >> /etc/default/haproxy
+echo "$config" >> /etc/haproxy/haproxy.cfg
 sudo service haproxy start
