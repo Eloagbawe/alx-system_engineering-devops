@@ -1,20 +1,22 @@
 #!/usr/bin/env bash
 # This script installs a load balancer haproxy and configures it
 
-sudo apt-get -y update
-sudo apt-get -y install haproxy
+apt-get -y install --no-install-recommends software-properties-common
+add-apt-repository -y ppa:vbernat/haproxy-2.6
+apt-get -y update
+apt-get -y install haproxy
 
-cat >> /etc/haproxy/haproxy.cfg << EOF
-frontend
-	bind *:80
-	option forwardfor  
-    default_backend nginx_webservers
+sed -i -e '$aENABLED=1\n' /etc/default/haproxy
+sed -i -e '$a\listen balancer\n\tbind :80\n\tbalance roundrobin\n\t34777-web-01 44.210.96.106:80 check\n\tserver 34777-web-02 54.90.63.204:80 check\n' /etc/haproxy/haproxy.cfg
+# echo "frontend
+# 	    bind *:80
+# 	    option forwardfor  
+#         default_backend nginx_webservers
 
-backend nginx_webservers
-    balance roundrobin
-    server 34777-web-01 44.210.96.106:80 check
-    server 34777-web-02 54.90.63.204:80 check
-EOF
-
-echo "ENABLED=1" > /etc/default/haproxy
+# backend nginx_webservers
+#         balance roundrobin
+#         server 34777-web-01 44.210.96.106:80 check
+#         server 34777-web-02 54.90.63.204:80 check
+# " | sudo tee -a /etc/haproxy/haproxy.cfg
+#echo "ENABLED=1" > /etc/default/haproxy
 service haproxy restart
