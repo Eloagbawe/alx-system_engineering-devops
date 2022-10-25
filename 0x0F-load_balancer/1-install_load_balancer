@@ -4,7 +4,7 @@
 apt-get -y install --no-install-recommends software-properties-common
 add-apt-repository -y ppa:vbernat/haproxy-2.5
 apt-get -y update
-apt-get -y install haproxy=2.5.\*
+apt-get -y install haproxy
 
 cat >> /etc/haproxy/haproxy.cfg << EOF
 frontend
