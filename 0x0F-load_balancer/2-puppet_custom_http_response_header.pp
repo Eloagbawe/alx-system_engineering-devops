@@ -1,4 +1,5 @@
-# Puppet manifest to install nginx and configure the server
+# Puppet manifest to install nginx, configure the server and sets a custom header
+
 exec {'update':
   provider => shell,
   command  => 'sudo apt-get -y update',
@@ -11,24 +12,14 @@ exec {'install Nginx':
   before   => Exec['add_header'],
 }
 
-file_line { 'Redirect':
-  ensure => 'present',
-  path   => '/etc/nginx/sites-available/default',
-  after  => 'listen 80 default_server;',
-  line   => 'rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;',
+exec { 'add_header':
+  provider    => shell,
+  environment => ["HOST=${hostname}"],
+  command     => 'sudo sed -i "s/include \/etc\/nginx\/sites-enabled\/\*;/include \/etc\/nginx\/sites-enabled\/\*;\n\tadd_header X-Served-By \"$HOST\";/" /etc/nginx/nginx.conf',
+  before      => Exec['restart Nginx'],
 }
 
-file { '/var/www/html/index.html':
-  content => 'Hello World!',
-}
-
-file_line { 'set_header':
-  ensure => 'present',
-  path   => '/etc/nginx/nginx.conf',
-  after  => 'include /etc/nginx/sites-enabled/*;',
-  line   => '\n\tadd_header X-Served-By $HOSTNAME;\n',
-}
-service { 'nginx':
-  ensure  => running,
-  require => Package['nginx'],
+exec { 'restart Nginx':
+  provider => shell,
+  command  => 'sudo service nginx restart',
 }
