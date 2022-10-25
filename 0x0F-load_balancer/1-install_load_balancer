@@ -6,6 +6,7 @@ sudo apt -y upgrade
 sudo apt-get -y install --no-install-recommends software-properties-common
 sudo add-apt-repository -y ppa:vbernat/haproxy-2.5
 sudo apt-get -y install haproxy=2.5.\*
+echo "ENABLED=1" > /etc/default/haproxy
 config=\
 "
 frontend haproxy-main
@@ -18,6 +19,5 @@ backend nginx_webservers
     server 34777-web-01 44.210.96.106:80 check
     server 34777-web-02 54.90.63.204:80 check
 "
-echo "$config" | sudo dd status=none of=/etc/haproxy/haproxy.cfg
-echo "ENABLED=1" | sudo dd status=none of=/etc/default/haproxy
+echo "$config" >> /etc/haproxy/haproxy.cfg
 sudo service haproxy start
