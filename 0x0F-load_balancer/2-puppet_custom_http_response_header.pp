@@ -1,6 +1,14 @@
 # Puppet manifest to install nginx and configure the server
-package { 'nginx':
-  ensure => installed,
+exec {'update':
+  provider => shell,
+  command  => 'sudo apt-get -y update',
+  before   => Exec['install Nginx'],
+}
+
+exec {'install Nginx':
+  provider => shell,
+  command  => 'sudo apt-get -y install nginx',
+  before   => Exec['add_header'],
 }
 
 file_line { 'Redirect':
@@ -14,11 +22,11 @@ file { '/var/www/html/index.html':
   content => 'Hello World!',
 }
 
-file_line { 'setHeader':
+file_line { 'set_header':
   ensure => 'present',
   path   => '/etc/nginx/nginx.conf',
   after  => 'include /etc/nginx/sites-enabled/*;',
-  line   => '\n\tadd_header X-Served-By ${::hostname};\n',
+  line   => '\n\tadd_header X-Served-By $HOSTNAME;\n',
 }
 service { 'nginx':
   ensure  => running,
