@@ -2,3 +2,4 @@
 # configures a server to listen to port 80
 
 sudo ufw allow 'Nginx HTTP'
+sudo service nginx restart
