@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+# This script prints information about subdomains
+
+
+func () {
+    if [ "$#" -eq 2 ]
+    then
+        domain=$2.$1
+        name=$(dig $domain | grep -A1 'ANSWER SECTION:' | awk -F. 'NR==2 {print $1}')
+        record=$(dig $domain  | grep -A1 'ANSWER SECTION:' | awk 'NR==2 {print $4}')
+        ip=$(dig $domain  | grep -A1 'ANSWER SECTION:' | awk 'NR==2 {print $5}')
+        echo "The domain $name is a $record record and points to $ip"
+    else
+        declare -a arr=("www" "lb-01" "web-01" "web-02")
+        for i in "${arr[@]}"
+        do
+            domain=$i.$1
+            name=$(dig $domain | grep -A1 'ANSWER SECTION:' | awk -F. 'NR==2 {print $1}')
+            record=$(dig $domain  | grep -A1 'ANSWER SECTION:' | awk 'NR==2 {print $4}')
+            ip=$(dig $domain  | grep -A1 'ANSWER SECTION:' | awk 'NR==2 {print $5}')
+            echo "The domain $name is a $record record and points to $ip"
+        done
+    fi  
+}
+
+func $1 $2
