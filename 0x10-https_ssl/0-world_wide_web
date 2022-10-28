@@ -5,7 +5,7 @@
 func () {
     if [ "$#" -le 1 ]
     then
-        exit 0
+        exit 1
     elif [ "$#" -eq 2 ]
     then
         domain=$2.$1
