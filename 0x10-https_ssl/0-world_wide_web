@@ -3,7 +3,10 @@
 
 # shellcheck disable=SC2086
 func () {
-    if [ "$#" -eq 2 ]
+    if [ "$#" -le 1 ]
+    then
+        exit 0
+    elif [ "$#" -eq 2 ]
     then
         domain=$2.$1
         name=$(dig $domain | grep -A1 'ANSWER SECTION:' | awk -F. 'NR==2 {print $1}')
