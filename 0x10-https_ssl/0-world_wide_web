@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # This script prints information about subdomains
 
-
+# shellcheck disable=SC2086
 func () {
     if [ "$#" -eq 2 ]
     then
