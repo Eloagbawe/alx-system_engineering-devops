@@ -2,6 +2,8 @@
 # This script creates a backup of all your databases
 
 mysqldump -uroot --password="$1" --all-databases > backup.mysql
-date=$(date "+%d-%m-%Y") 
-backupFile="$date.tar.gz"
+day=$(date +"%d")
+month=$(date +"%m")
+year=$(date +"%Y")
+backupFile="$day-$month-$year.tar.gz"
 tar -cvzf "$backupFile" backup.mysql
