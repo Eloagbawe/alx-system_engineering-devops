@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # This script creates a backup of all your databases
 
-mysqldump --all-databases -u root --password="$1" > backup.sql
+mysqldump -u root --password="$1" --all-databases > backup.mysql
 date=$(date "+%d-%m-%Y") 
 backupFile="$date.tar.gz"
 tar -cvzf "$backupFile" backup.mysql
