@@ -19,7 +19,7 @@ if __name__ == "__main__":
         if value.get('completed'):
             completed_tasks.append(value.get('title'))
 
-    print("Employee {} is done with tasks ({}/{}):"
+    print("Employee {} is done with tasks({}/{}):"
           .format(name, len(completed_tasks), len(todo_data)))
 
     for value in completed_tasks:
