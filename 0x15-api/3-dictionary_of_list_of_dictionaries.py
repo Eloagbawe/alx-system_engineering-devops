@@ -19,9 +19,9 @@ if __name__ == "__main__":
                                  .format(base_url, id)).json()
         for value in todo_data:
             res_dict = {}
-            res_dict['username'] = name
             res_dict['task'] = value.get('title')
             res_dict['completed'] = value.get('completed')
+            res_dict['username'] = name
             data.append(res_dict)
         data_dict[id] = data
 
