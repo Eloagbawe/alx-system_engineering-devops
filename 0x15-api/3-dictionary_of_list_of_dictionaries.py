@@ -3,7 +3,6 @@
 
 import json
 import requests
-import sys
 
 
 if __name__ == "__main__":
@@ -18,13 +17,11 @@ if __name__ == "__main__":
         todo_data = requests.get("{}/users/{}/todos"
                                  .format(base_url, id)).json()
         for value in todo_data:
-            res_dict = {}
-            res_dict['task'] = value.get('title')
-            res_dict['completed'] = value.get('completed')
-            res_dict['username'] = name
+            res_dict = {"username": name, "task": value.get("title"),
+                        "completed": value.get('completed')}
             data.append(res_dict)
         data_dict[id] = data
 
     filename = "todo_all_employees.json"
-    with open(filename, 'a', encoding="utf-8") as f:
+    with open(filename, 'w') as f:
         f.write(json.dumps(data_dict))
