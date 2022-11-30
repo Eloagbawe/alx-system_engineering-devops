@@ -31,17 +31,11 @@ def count_words(subreddit, word_list, after="", converted_list={}):
     data = requests.get("{}/r/{}/hot.json?after={}&limit=100"
                         .format(base_url, subreddit, after),
                         headers=headers, allow_redirects=False)
-    try:
-        result_data = data.json()
-        if data.status_code != 200:
-            raise Exception
-    except Exception:
+
+    if data.status_code != 200:
         print("")
         return
-    # if data.status_code != 200:
-    #     print("")
-    #     return
-    result = result_data.get('data')
+    result = data.json().get('data')
     hot_posts = result.get('children')
     nextPage = result.get('after')
     if converted_list == {}:
