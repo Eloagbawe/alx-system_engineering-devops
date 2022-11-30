@@ -6,8 +6,8 @@ import requests
 
 def recurse(subreddit, hot_list=[], after=""):
     """
-    This function prints the titles of the first
-    10 hot posts listed for a given subreddit.
+    This function returns a list containing the
+    titles of all hot articles for a given subreddit.
     """
     base_url = 'https://www.reddit.com'
     headers = {'user-agent': 'Mozilla/5.0 (Linux; Android 6.0; Nexus\
