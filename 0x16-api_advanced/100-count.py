@@ -4,19 +4,6 @@
 import requests
 
 
-def convertToDict(word_list):
-    """This function converts the word list array
-    to a dictionary with initialized values
-    """
-    values = []
-    word_list = [x.lower() for x in word_list]
-    for a in word_list:
-        values.append(0)
-    my_dict = dict(zip(word_list, values))
-
-    return my_dict
-
-
 def count_words(subreddit, word_list, after="", converted_list={}):
     """
      This function parses the title of all hot articles,
@@ -37,12 +24,14 @@ def count_words(subreddit, word_list, after="", converted_list={}):
     result = data.json().get('data')
     hot_posts = result.get('children')
     nextPage = result.get('after')
+    word_list = [x.lower() for x in word_list]
+
     if converted_list == {}:
-        converted_list = convertToDict(word_list)
+        values = [0 for x in word_list]
+        converted_list = dict(zip(word_list, values))
     for i in hot_posts:
         title = i.get('data').get('title').lower()
         title_list = title.split()
-        word_list = [x.lower() for x in word_list]
         for x in title_list:
             for y in word_list:
                 if y == x:
