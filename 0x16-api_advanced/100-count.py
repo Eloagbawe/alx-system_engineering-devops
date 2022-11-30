@@ -24,26 +24,29 @@ def count_words(subreddit, word_list, after="", converted_list={}):
     result = data.json().get('data')
     hot_posts = result.get('children')
     nextPage = result.get('after')
-    word_list = [x.lower() for x in word_list]
 
-    if converted_list == {}:
-        values = [0 for x in word_list]
-        converted_list = dict(zip(word_list, values))
+    # if converted_list == {}:
+    #     word_list = [word.lower() for word in word_list]
+    #     values = [0 for x in word_list]
+    #     converted_list = dict(zip(word_list, values))
+
     for i in hot_posts:
-        title = i.get('data').get('title').lower()
-        title_list = title.split()
-        for x in title_list:
-            for y in word_list:
-                if y == x:
-                    converted_list[y] += 1
+        title_list = i.get('data').get('title').lower().split()
+        for word in word_list:
+            lowerCase = word.lower()
+            times = len([x for x in title_list if x == lowerCase])
+            if converted_list.get(lowerCase) is None:
+                converted_list[lowerCase] = times
+            else:
+                converted_list[lowerCase] += times
+            # converted_list[word] += times
 
     if nextPage is None:
         if len(converted_list) == 0:
             return
         sorted_list = sorted(converted_list.items(),
                              key=lambda x: (-x[1], x[0]))
-        for i in sorted_list:
-            if i[1] != 0:
-                print("{}: {}".format(i[0], i[1]))
+        [print("{}: {}"
+               .format(key, val)) for key, val in sorted_list if val != 0]
     else:
         count_words(subreddit, word_list, nextPage, converted_list)
