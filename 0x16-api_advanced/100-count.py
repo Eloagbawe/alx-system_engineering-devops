@@ -4,21 +4,12 @@
 import requests
 
 
-def uniqueLowerCase(word_list):
-    """This function converts all values of a
-    string array to lowercase and makes values
-    unique"""
-    word_list = [x.lower() for x in word_list]
-    word_list = list(set(word_list))
-    return word_list
-
-
 def convertToDict(word_list):
     """This function converts the word list array
     to a dictionary with initialized values
     """
     values = []
-    word_list = uniqueLowerCase(word_list)
+    word_list = [x.lower() for x in word_list]
     for a in word_list:
         values.append(0)
     my_dict = dict(zip(word_list, values))
@@ -58,15 +49,13 @@ def count_words(subreddit, word_list, after="", converted_list={}):
     for i in hot_posts:
         title = i.get('data').get('title').lower()
         title_list = title.split()
-        word_list = uniqueLowerCase(word_list)
+        word_list = [x.lower() for x in word_list]
         for x in title_list:
             for y in word_list:
                 if y == x:
                     converted_list[y] += 1
 
-    if nextPage is not None:
-        count_words(subreddit, word_list, nextPage, converted_list)
-    else:
+    if nextPage is None:
         if len(converted_list) == 0:
             print("")
             return
@@ -75,4 +64,5 @@ def count_words(subreddit, word_list, after="", converted_list={}):
         for i in sorted_list:
             if i[1] != 0:
                 print("{}: {}".format(i[0], i[1]))
-        return
+    else:
+        count_words(subreddit, word_list, nextPage, converted_list)
