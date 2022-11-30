@@ -9,7 +9,7 @@ def uniqueLowerCase(word_list):
     string array to lowercase and makes values
     unique"""
     word_list = [x.lower() for x in word_list]
-    # word_list = list(set(word_list))
+    word_list = list(set(word_list))
     return word_list
 
 
