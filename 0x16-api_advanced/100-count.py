@@ -33,7 +33,6 @@ def count_words(subreddit, word_list, after="", converted_list={}):
                         headers=headers, allow_redirects=False)
 
     if data.status_code != 200:
-        print("")
         return
     result = data.json().get('data')
     hot_posts = result.get('children')
@@ -51,7 +50,6 @@ def count_words(subreddit, word_list, after="", converted_list={}):
 
     if nextPage is None:
         if len(converted_list) == 0:
-            print("")
             return
         sorted_list = sorted(converted_list.items(),
                              key=lambda x: (-x[1], x[0]))
