@@ -9,7 +9,7 @@ def uniqueLowerCase(word_list):
     string array to lowercase and makes values
     unique"""
     word_list = [x.lower() for x in word_list]
-    word_list = list(set(word_list))
+    # word_list = list(set(word_list))
     return word_list
 
 
@@ -40,9 +40,17 @@ def count_words(subreddit, word_list, after="", converted_list={}):
     data = requests.get("{}/r/{}/hot.json?after={}&limit=100"
                         .format(base_url, subreddit, after),
                         headers=headers, allow_redirects=False)
-    if data.status_code != 200:
+    try:
+        result_data = data.json()
+        if data.status_code != 200:
+            raise Exception
+    except Exception:
+        print("")
         return
-    result = data.json().get('data')
+    # if data.status_code != 200:
+    #     print("")
+    #     return
+    result = result_data.get('data')
     hot_posts = result.get('children')
     nextPage = result.get('after')
     if converted_list == {}:
@@ -59,6 +67,9 @@ def count_words(subreddit, word_list, after="", converted_list={}):
     if nextPage is not None:
         count_words(subreddit, word_list, nextPage, converted_list)
     else:
+        if len(converted_list) == 0:
+            print("")
+            return
         sorted_list = sorted(converted_list.items(),
                              key=lambda x: (-x[1], x[0]))
         for i in sorted_list:
