@@ -1,6 +1,6 @@
 # Postmorterm
 
-<img src="postmorterm.jpeg" alt="error image" width="200"/>
+<img src="postmorterm.jpeg" alt="error image" width="400"/>
 
 ## Issue Summary
 The company's server had a downtime for 8 minutes on December 3rd 2022. The incident occurred from 2:00pm WAT till 2:08pm WAT. GET requests resulted in a 500 internal server error and all users were affected. After a minor update to the app, a script accidentally stopped the web server nginx from running.
