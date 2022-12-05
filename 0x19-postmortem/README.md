@@ -1,4 +1,4 @@
-# Postmorterm
+# Postmortem
 
 <img src="postmorterm.jpeg" alt="error image" width="400"/>
 
