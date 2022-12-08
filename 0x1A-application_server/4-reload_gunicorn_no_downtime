@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
 # Kill gunicorn worker processes gracefully, with no downtime
-pkill -HUP gunicorn
+#pkill -HUP gunicorn
+ps aux | grep gunicorn | awk '{ print $2 }' | xargs kill -HUP
