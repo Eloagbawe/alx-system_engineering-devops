@@ -21,8 +21,7 @@ server {
 	#
 	# include snippets/snakeoil.conf;
 
-	#root /var/www/html;
-	root ~/AirBnB_clone_v4/web_dynamic/static/;
+	root /var/www/html;
 
 	# Add index.php to the list if you are using PHP
 	index index.html index.htm index.nginx-debian.html;
@@ -41,7 +40,7 @@ server {
 		# First attempt to serve request as file, then
 		# as directory, then fall back to displaying a 404.
 		#root ~/AirBnB_clone_v4/web_dynamic/static/;
-		proxy_pass http://localhost:5003;
+		proxy_pass http://localhost:5003/2-hbnb;
 		#try_files $uri $uri/ =404;
 	}
 	
@@ -56,5 +55,8 @@ server {
 	location /api/ {
 		proxy_pass http://localhost:5002;
 	}
+    location /static {
+        proxy_pass http://localhost:5003;
+    }
 	
 }
