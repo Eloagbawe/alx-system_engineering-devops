@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
 # Kill gunicorn worker processes gracefully, with no downtime
-ps aux | grep gunicorn | awk '{ print $2 }' | xargs kill -HUP
+PID=$(pgrep gunicorn | head -n 1)
+kill -HUP "$PID"
